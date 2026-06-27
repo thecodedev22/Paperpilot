@@ -63,3 +63,9 @@ def get_all_decks():
 
     conn.close()
     return rows
+def delete_deck(deck):
+    conn = sqlite3.connect(DB_NAME)
+    c = conn.cursor()
+    c.execute("DELETE FROM flashcards WHERE deck = ?", (deck,))
+    conn.commit()
+    conn.close()
